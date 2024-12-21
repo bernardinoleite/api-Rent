@@ -5,3 +5,4 @@ arquivo.csv
 .env
 arquivo_unico.csv
 ormConfig.ts
+yarn-error.log
