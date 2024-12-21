@@ -19,8 +19,9 @@ class User {
 
     @Column()
     driver_license: string;
-    @Column()
-    admin: boolean;
+
+    @Column({ default: false })
+    isAdmin: boolean;
 
     @CreateDateColumn()
     created_at: Date;
