@@ -14,7 +14,7 @@ class CreateSpecificationUseCase {
         const specificationAlreadExists = await this.specificationRepository.findByName(name)
 
         if (specificationAlreadExists) {
-            throw new Error("Specification alread Exist");
+            throw new Error("Specification already Exist");
         }
 
         await this.specificationRepository.create({ name, description })
