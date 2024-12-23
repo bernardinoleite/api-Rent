@@ -1,3 +1,4 @@
+import { AppError } from "../../../../errors/AppError";
 import { ISpecificationRepository } from "../../repositories/ISpecificationsRepository";
 
 
@@ -14,7 +15,7 @@ class CreateSpecificationUseCase {
         const specificationAlreadExists = await this.specificationRepository.findByName(name)
 
         if (specificationAlreadExists) {
-            throw new Error("Specification already Exist");
+            throw new AppError("Specification already Exist");
         }
 
         await this.specificationRepository.create({ name, description })

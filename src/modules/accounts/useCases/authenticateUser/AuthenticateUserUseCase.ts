@@ -1,6 +1,7 @@
 import { IUserRepository } from "../../repositories/IUserRepository";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken"
+import { AppError } from "../../../../errors/AppError";
 interface IRequest {
     email: string;
     password: string;
@@ -23,14 +24,14 @@ class AuthenticateUserUseCase {
 
         //verificar se o user existe
         if (!user) {
-            throw new Error("Email or password incorrect!")
+            throw new AppError("Email or password incorrect!")
         }
         //verificar se a password está correcta
 
         const passwordMatch = await compare(password, user.password)
 
         if (!passwordMatch) {
-            throw new Error("Email or password incorrect!")
+            throw new AppError("Email or password incorrect!")
         }
 
         //gerar token, caso true

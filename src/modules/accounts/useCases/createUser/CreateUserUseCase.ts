@@ -2,6 +2,7 @@ import { hash } from "bcrypt";
 
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
 import { IUserRepository } from "../../repositories/IUserRepository";
+import { AppError } from "../../../../errors/AppError";
 
 
 class CreateUserUseCase {
@@ -14,7 +15,7 @@ class CreateUserUseCase {
         const userAlreadyExists = await this.userRepository.findByEmail(email)
 
         if (userAlreadyExists) {
-            throw new Error("User already exists")
+            throw new AppError("User already exists")
         }
         const passwordHash = await hash(password, 9)
         await this.userRepository.create({ name, password: passwordHash, email, driver_license })
