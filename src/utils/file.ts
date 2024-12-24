@@ -1,9 +1,11 @@
-import { promises } from "fs"
+import fs from "fs"
 export const deleteFile = async (filename: string) => {
     try {
-        await promises.stat(filename) //verifica se existe
-    } catch {
+        await fs.promises.stat(filename) //verifica se existe
+    } catch (error) {
+        console.log("cai aqui")
         return //caso não existe, sai da aplicação
     }
-    await promises.unlink(filename) // remove caso o stat achar
+    await fs.promises.unlink(filename) // remove caso o stat achar
+
 }
