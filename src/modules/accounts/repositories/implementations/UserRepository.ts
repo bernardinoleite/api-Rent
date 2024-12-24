@@ -13,6 +13,7 @@ class UserRepository implements IUserRepository {
         this.repository = AppDataSource.getRepository(User)
     }
 
+
     async create({ name, password, email, driver_license }: ICreateUserDTO): Promise<void> {
 
         const user = this.repository.create({ name, password, email, driver_license })
@@ -27,6 +28,9 @@ class UserRepository implements IUserRepository {
     async findById(id: string): Promise<User> {
         const user = await this.repository.findOneBy({ id })
         return user
+    }
+    async update(user: User): Promise<void> {
+        await this.repository.update({ id: user.id }, user)
     }
 }
 
