@@ -14,17 +14,19 @@ export async function ensureAuthenticated(request: Request, response: Response, 
 
     const [, token] = authHeader.split(" ")
     try {
-        const { sub: id } = verify(token, "04448061630924d97c7979e58130c4e0")
+        const { sub: user_id } = verify(token, "04448061630924d97c7979e58130c4e0")
 
         const userRepository = new UserRepository()
-        const user = await userRepository.findById(id)
+        const user = await userRepository.findById(user_id)
 
         if (!user) {
             throw new AppError("User does not exists", 401)
         }
-        request.user = user
+        request.user = {
+            id: user_id
+        }
 
-        console.log()
+
         next()
     } catch (error) {
         throw new AppError("Invalid token", 401)
