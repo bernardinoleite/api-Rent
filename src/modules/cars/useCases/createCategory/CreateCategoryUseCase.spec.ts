@@ -27,5 +27,22 @@ describe("Create Category", () => {
     })
 
 
+    it("Should not be able to create a new Category with same name", async () => {
+
+        expect(async () => {
+
+
+            const category = {
+                name: "Category Test",
+                description: "Description Category Test"
+            }
+
+            await createCategoryUseCase.execute(category)
+            await createCategoryUseCase.execute(category)
+
+        }).rejects.toBeInstanceOf(AppError)
+
+    })
+
 
 })
