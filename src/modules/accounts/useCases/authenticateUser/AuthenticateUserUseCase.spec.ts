@@ -35,4 +35,14 @@ describe("Authenticate User", () => {
     })
 
 
+    it("should not be able to athenticate an nonexistent user", () => {
+
+        expect(async () => {
+            await authenticateUserUseCase.execute({ email: "false@email.com", password: "12321" })
+        }).rejects.toBeInstanceOf(AppError)
+
+    })
+
+
+
 })
