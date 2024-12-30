@@ -2,7 +2,7 @@ import { hash } from "bcrypt";
 
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
 import { IUserRepository } from "../../repositories/IUserRepository";
-import { AppError } from "../../../../errors/AppError";
+import { AppError } from "../../../../shared/errors/AppError";
 
 
 class CreateUserUseCase {
