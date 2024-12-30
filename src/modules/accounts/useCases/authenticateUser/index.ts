@@ -1,4 +1,4 @@
-import { UserRepository } from "../../repositories/implementations/UserRepository";
+import { UserRepository } from "../../infra/typeorm/repositories/UserRepository";
 import { AuthenticateUserController } from "./AuthenticateUserController";
 import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase";
 
