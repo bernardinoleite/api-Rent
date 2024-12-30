@@ -1,6 +1,6 @@
 import fs from "node:fs"
 import { Transform } from "node:stream"
-import { CategoriesRepository } from "../../repositories/implementations/CategoriesRepository"
+import { CategoriesRepository } from "../../infra/typeorm/repositories/CategoriesRepository"
 
 
 interface IImportCategories {

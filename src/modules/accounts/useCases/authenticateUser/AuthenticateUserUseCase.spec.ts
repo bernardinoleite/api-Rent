@@ -55,7 +55,7 @@ describe("Authenticate User", () => {
             }
 
             await createUseUseCase.execute(user)
-            await authenticateUserUseCase.execute({ email: user.email, password: "df" })
+            await authenticateUserUseCase.execute({ email: user.email, password: "IncorrectPassword" })
 
         }).rejects.toBeInstanceOf(AppError)
     })
