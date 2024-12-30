@@ -1,6 +1,6 @@
 import express from "express";
 import "express-async-errors"
-import { router } from "./routes";
+import { router } from "./shared/infra/http/routes";
 import { Request, Response, NextFunction } from "express";
 import "./../ormConfig"
 import { AppError } from "./errors/AppError";
